@@ -12,7 +12,6 @@ fun(props);
 // Index signature is missing in type 'Props'.ts(2345)
 
 interface Props {
-  // Error
   content: string;
 }
 

@@ -10,6 +10,7 @@ declare const fun: (p: Record<string, string>) => void;
 fun(props); // OK
 
 type Props = {
+  // Error
   content: string;
 };
 

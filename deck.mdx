@@ -2,6 +2,8 @@ import { CodeSurfer, CodeSurferColumns, Step } from 'code-surfer';
 import { Head, Image, Appear, Notes, Embed } from 'mdx-deck';
 import { github } from '@code-surfer/themes';
 
+import ts from './assets/ts.png';
+
 export const theme = github;
 
 <Head>
@@ -11,3 +13,144 @@ export const theme = github;
 # Hello 👋
 
 ---
+
+<img src={ts} />
+
+http://typescriptlang.org/play/
+
+---
+
+# What is TypeScript?
+
+<Appear>
+  <li>Statically typed language</li>
+  <li>Superset of JavaScript</li>
+  <li>It transpiles to JavaScript</li>
+</Appear>
+
+---
+
+<CodeSurfer>
+
+  ```typescript 1 file=./src/basicTypes.ts title="Basic data types" subtitle="Strings"
+  ```
+
+  ```typescript 3 file=./src/basicTypes.ts title="Basic data types" subtitle="Booleans"
+  ```
+
+  ```typescript 5 file=./src/basicTypes.ts title="Basic data types" subtitle="Numbers"
+  ```
+
+  ```typescript 7:8 file=./src/basicTypes.ts title="Basic data types" subtitle="Arrays"
+  ```
+
+  ```typescript 10:15 file=./src/basicTypes.ts title="Basic data types" subtitle="Enums"
+  ```
+
+  ```typescript 17:19 file=./src/basicTypes.ts title="Basic data types" subtitle="Any"
+  ```
+
+  ```typescript 21:23 file=./src/basicTypes.ts title="Basic data types" subtitle="Void"
+  ```
+
+  ```typescript 25:33 file=./src/basicTypes.ts title="Basic data types" subtitle="Never"
+  ```
+
+  ```typescript 35:37 file=./src/basicTypes.ts title="Basic data types" subtitle="Object"
+  ```
+
+  ```typescript 39:41 file=./src/basicTypes.ts title="Basic data types" subtitle="Type assertions"
+  ```
+
+</CodeSurfer>
+
+---
+
+<!-- Types vs interfaces  -->
+<CodeSurferColumns>
+
+<Step subtitle="Declaration">
+
+```typescript 1:4 file=./src/interfaces.ts title="Interface"
+```
+```typescript 1:4 file=./src/types.ts title="Type"
+```
+
+</Step>
+
+<Step subtitle="Use as dictionary">
+
+```typescript 1:13 file=./src/interfaces.ts title="Interface"
+```
+
+```typescript 1:11 file=./src/types.ts title="Type"
+```
+
+</Step>
+
+<Step subtitle="Declaration merging">
+
+```typescript 14:22 file=./src/interfaces.ts title="Interface"
+```
+
+```typescript 12:20 file=./src/types.ts title="Type"
+```
+
+</Step>
+
+<Step subtitle="Extending definitions">
+
+```typescript 19:27 file=./src/interfaces.ts title="Interface"
+```
+
+```typescript 16:24 file=./src/types.ts title="Type"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+
+<!-- Structural type system  -->
+<CodeSurfer>
+
+
+```typescript 1:9 file=./src/structuralTypeSystem.ts title="Structural type system"
+```
+
+```typescript 11 file=./src/structuralTypeSystem.ts title="Structural type system"
+```
+
+```typescript 13:18 file=./src/structuralTypeSystem.ts title="Structural type system"
+```
+</CodeSurfer>
+
+---
+<CodeSurfer>
+
+```typescript 1:3 file=./src/dictsAndObjects.ts title="Dictionaries" subtitle="Basic definition"
+```
+
+```typescript 5:7 file=./src/dictsAndObjects.ts title="Dictionaries" subtitle="Dynamic definition"
+```
+
+```typescript 9:10 file=./src/dictsAndObjects.ts title="Dictionaries" subtitle="Index signatures"
+```
+
+</CodeSurfer>
+
+---
+
+<!-- Immutable data -->
+<CodeSurfer>
+
+```typescript 1:6 file=./src/immutableData.ts title="Immutable data" subtitle="You can call me Aleksandra"
+```
+```typescript 8:19 file=./src/immutableData.ts title="Immutable data" subtitle="Now you can't"
+```
+```typescript 21:22 file=./src/immutableData.ts title="Immutable data" subtitle="The same goes for variables"
+```
+
+</CodeSurfer>

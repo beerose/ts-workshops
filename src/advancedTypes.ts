@@ -22,14 +22,6 @@ const checkPostalCode = (postalCode: string | number) => {
   // check if postal code is valid
 };
 
-const isNumber = (x: any): x is number => {
-  return typeof x === 'number';
-};
-
-const isUser = (x: any): x is User => {
-  return (x as User).name && typeof (x as User).name === 'string';
-};
-
 type State = 'initial' | 'loading' | 'success' | 'error';
 
 type NumericState = 0 | 1 | 2;

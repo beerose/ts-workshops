@@ -61,7 +61,7 @@ const theme = {
           color: colors.pink,
         },
         'builtin char constant function class-name': {
-          color: 'rgb(250, 208, 0)',
+          color: colors.orange,
         },
       },
       title: {

@@ -1,25 +1,27 @@
-type Props = {
-  title: string;
-  isOpen: boolean;
-};
+{
+  type Props = {
+    title: string;
+    isOpen: boolean;
+  };
 
-declare const props: Props;
+  declare const props1: Props;
 
-declare const fun: (p: Record<string, string>) => void;
+  declare const fun1: (p: Record<string, string | boolean>) => void;
 
-fun(props); // OK
+  fun1(props1); // ✅
 
-type Props = {
-  // Error
-  content: string;
-};
+  type Props = {
+    // ❌
+    content: string;
+  };
 
-const propsV2: Props = {
-  title: 'Main page',
-  isOpen: true,
-  content: 'Lorem ipsum', // Error
-};
+  const propsV2: Props = {
+    title: 'Main page',
+    isOpen: true,
+    content: 'Lorem ipsum', // ❌
+  };
 
-type ExtendedProps = Props & {
-  onClick: () => void;
-};
+  type ExtendedProps = Props & {
+    onClick: () => void;
+  };
+}

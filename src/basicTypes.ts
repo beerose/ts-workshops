@@ -12,7 +12,7 @@ iDontKnow = 5;
 iDontKnow = "or maybe it's a string";
 
 let notify: void;
-notify = undefined; // OK
+notify = undefined; // ✅
 notify = null; // OK if `strictNullChecks` is not set
 
 // Unreachable end point
@@ -26,5 +26,5 @@ const infiniteLoop = (): never => {
 };
 
 let user: object;
-user = null;
+user = null; // OK if `strictNullChecks` is not set
 user = { name: 'Jon', age: 32 };

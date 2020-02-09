@@ -35,8 +35,6 @@ const theme = {
         },
         comment: {
           color: colors.gray,
-          fontStyle: 'italic',
-          opacity: 0.8,
         },
         punctuation: {
           color: colors.gray,

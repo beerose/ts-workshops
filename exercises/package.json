@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "tsc": "./tscExercise.sh",
+    "test": "./runExercise.sh"
+  },
+  "devDependencies": {},
+  "name": "exercises",
+  "dependencies": {
+    "typescript": "^3.7.5"
+  }
+}

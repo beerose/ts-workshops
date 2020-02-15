@@ -33,15 +33,18 @@
 
 type User = {
   name: string;
-  surename: string;
+  surname: string;
   city: string;
   country: string;
   address: string;
   zipcode: string;
 };
 
-type UserDisplayInfo = Pick<User, 'name' | 'surename'>;
-// type Pick<T, K extends keyof T> = {[key in K]: T[key]}; builtin
+// we can index object types
+type Username = User['name'];
+
+type UserDisplayInfo = Pick<User, 'name' | 'surname'>;
+// type Pick<T, K extends keyof T> = { [key in K]: T[key] }; builtin;
 
 type UserWithoutZipcode = Omit<User, 'zipcode'>;
 // type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>; builtin

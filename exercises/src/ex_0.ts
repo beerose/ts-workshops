@@ -1,7 +1,7 @@
 /**
  * Exercise 0: Basic types
  *
- * Annotate following code with types.
+ * Annotate following code with types
  */
 
 function sum(number1, number2) {

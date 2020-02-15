@@ -7,7 +7,7 @@
 
   type User = {
     name: string;
-    surename?: string;
+    surname?: string;
   };
 
   const fetchUser = (): AddressInfo & User => {
@@ -32,7 +32,7 @@ type NumericState = 0 | 1 | 2;
   type Human = {
     kind: 'human';
     name: string;
-    surename: string;
+    surname: string;
     country: string;
   };
 

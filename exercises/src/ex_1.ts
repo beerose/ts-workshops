@@ -10,7 +10,7 @@ interface Person {
 
 /**
  * Very often when we want to send an object for update to the API,
- * we only need to send a subset of it — only the priperties that were changed.
+ * we only need to send a subset of it — only the properties that were changed.
  * Let's say we want to update item of type Person. Then we would need 
  * following type:
  */

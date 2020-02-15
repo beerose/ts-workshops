@@ -1,29 +1,63 @@
 /**
- * Exercise 10
-*/
- 
-
-/** 
- * If we have a type which is wrapped type like Promise,
- * how we can get a type which is inside the wrapped type?
- *
- * For example if we have Promise<ExampleType> how to get ExampleType?
- * 
- * Task: add implementation for ExtractType
+ * Exercise 10: Utility types
  */
 
 import { ok } from 'assert';
 
-type X = Promise<string>;
-type Y = Promise<{ field: number }>;
+/**
+ * SetDifference type should return a set difference of given union types `A` and `B`
+ * 
+ * Task 1: Implement this type using conditional types.
+ */
+export type SetDifference<A, B> = /** implement me! */;
 
-type ResultX = ExtractType<X>; // ResultX type equals string
-type ResultY = ExtractType<Y>; // ResultY type equals { field: number }
+declare const one: SetDifference<'1' | '2' | '3', '2' | '3' | '4'>;
+ok(one === "1")
 
-type ExtractType<A> = /** implement me! **/ ;
+/**
+ * Subtract from `T` removes properties that exist in `T1` 
+ * (`T1` has a subset of the properties of `T`)
+ * 
+ * Task 2: Implement Substract using SetDifference type
+ */
+export type Subtract<T extends T1, T1 extends object> = /** implement me! */;
 
-declare const x: ResultX;
-declare const y: ResultY;
+type Props = { name: string; age: number; visible: boolean };
+type DefaultProps = { age: number };
 
-ok(typeof x === 'string');
-ok('field' in y && typeof y.field === 'number');
+type RestProps = Subtract<Props, DefaultProps>;
+declare const restProps: RestProps;
+
+ok(
+  'name' in restProps &&
+    'visible' in restProps &&
+    typeof restProps.name === 'string' &&
+    typeof restProps.visible === 'boolean',
+);
+
+/**
+ * Optional makes a set of properties optional in T
+ *
+ * For example:
+ * type Props = {
+ *   name: string;
+ *   age: number;
+ *   visible: boolean;
+ * }
+ * type Props2 = Optional<Props, 'age' | 'visible'>;
+ * // Expect: { name: string; age?: number; visible?: boolean; }
+ * 
+ * Task 3: Implement Optional type using utility types 
+ */
+export type Optional<T extends object, K extends keyof T = keyof T> = /** implement me */;
+
+type Item = {
+  weight: number,
+  name: string,
+}
+
+type ItemWithOptionalWeight = Optional<Item, "weight">
+
+const item: ItemWithOptionalWeight = {
+  name: "book"
+}

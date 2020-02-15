@@ -31,14 +31,17 @@
  * Task: Add implementation to the following type Brand.
  */
 
-export type Brand<T, S extends PropertyKey> = /** fill me! */
+export type Brand<T, S extends PropertyKey> = /** fill me! */;
 
 type USD = Brand<number, 'USD'>;
 type EUR = Brand<number, 'EUR'>;
 
-const tax = 5 as USD;
-const usd = 10 as USD;
-const eur = 10 as EUR;
+const tax: USD = 5 as USD;
+const usd: USD = 10 as USD;
+const eur: EUR = usd * 1.08;
+
+// USD is assignable to number
+const x: number = usd;
 
 function gross(net: USD): USD {
   return (net + tax) as USD;
@@ -46,5 +49,10 @@ function gross(net: USD): USD {
 
 // Expect: No compile error
 gross(usd);
+
+// Number and EUR are not assignable to USD
+// Expect error
+const dollars: USD = 100;
+
 // Expect: Compile error (Type '"EUR"' is not assignable to type '"USD"'.)
 gross(eur);

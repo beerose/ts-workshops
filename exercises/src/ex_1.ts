@@ -37,7 +37,7 @@ type MappedPerson = MyPartialType<Person>;
 
 
 /**
- * Now, let's create a type where only name and bio are optional.
+ * Now, let's create a type where only name and age are optional.
  */
 
 type MyPartialTypeForUpdate = /** implement me! */;

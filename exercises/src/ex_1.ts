@@ -40,8 +40,8 @@ type MappedPerson = MyPartialType<Person>;
  * Now, let's create a type where only name and bio are optional.
  */
 
-type MyPartialTypeForUpdate<Type> = /** implement me! */;
+type MyPartialTypeForUpdate = /** implement me! */;
 
-const test: MyPartialTypeForUpdate<Person> = {
+const test: MyPartialTypeForUpdate = {
   id: 1,
 }

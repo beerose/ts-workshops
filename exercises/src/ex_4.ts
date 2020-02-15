@@ -27,13 +27,11 @@
  * There are some techniques for simulating nominal types within TypeScript.
  * The most common technique is called branding.
  * A brand, or tag, is usually a string literal type added to a non-existent property on an object.
- * 
+ *
  * Task: Add implementation to the following type Brand.
  */
 
-
-export type Brand<T, U> = /** fill me! */;
-
+export type Brand<T, S extends PropertyKey> = /** fill me! */
 
 type USD = Brand<number, 'USD'>;
 type EUR = Brand<number, 'EUR'>;

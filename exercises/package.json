@@ -8,6 +8,8 @@
   "devDependencies": {},
   "name": "exercises",
   "dependencies": {
+    "@types/react": "^16.9.19",
+    "react": "^16.12.0",
     "typescript": "^3.7.5"
   }
 }

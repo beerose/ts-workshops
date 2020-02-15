@@ -8,7 +8,8 @@
     "ex-3": "tsc ./src/ex_3.ts",
     "ex-4": "tsc ./src/ex_4.ts",
     "ex-5": "tsc ./src/ex_5.tsx",
-    "ex-6": "tsc ./src/ex_6.tsx"
+    "ex-6": "tsc ./src/ex_6.tsx",
+    "ex-7": "tsc ./src/ex_7.tsx"
   },
   "devDependencies": {},
   "name": "exercises",

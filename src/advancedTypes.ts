@@ -109,3 +109,22 @@ getSum(expenses, 'cosmetics'); // error
   //   spaceship?: string;
   // }
 }
+
+type NonBooleans<T> = T extends boolean ? never : T;
+
+type Foo = NonBooleans<true | 'string' | 6>;
+// 'string' | 6
+
+const processText = <T extends string | null>(
+  text: T,
+): T extends string ? string : null => {
+  return (text === null ? null : text) as any;
+};
+
+processText(null); // null
+processText('text'); // string
+
+type Bar<T> = T extends { a: infer U; b: infer U } ? U : never;
+
+type Extracted = Bar<{ a: Person; b: Person }>;
+// Person

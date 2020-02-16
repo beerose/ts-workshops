@@ -54,3 +54,11 @@ type P = Parameters<(x: string, y: number) => void>;
 
 type R = ReturnType<(x: string, y: number) => void>;
 // void
+
+type T0 = Exclude<'a' | 'b' | 'c', 'a'>;
+// "b" | "c"
+// type Exclude<T, U> = T extends U ? never T;
+
+type T1 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
+// "a"
+// type Extract<T, U> = T extends U ? T : never;

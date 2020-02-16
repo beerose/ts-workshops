@@ -2,13 +2,14 @@
  * Exercise 12: Sum Types and Conditional Types
  *
  * In this exercise we're going to implement lightweight sum type matching
- * which imitates patter matching.
+ * which imitates well known from other languages pattern matching.
+ * It can be use as a "switch expression".
  */
 
 interface Cat {
   type: 'cat';
   name: string;
-  lives: { age: number };
+  lives: { age: number }[];
 }
 interface Dog {
   type: 'dog';
@@ -20,45 +21,43 @@ type Pet = Cat | Dog;
 
 /**
  * We're assuming that the discriminant property is named `type`.
- * Below type extracts all the discriminants values from given union type.
+ * The type below extracts all the discriminants from given union type.
+ *
+ * Task 1: Fill the blanks with proper types.
  */
-type TypeOf<T extends { type: any }> = T extends { type: infer Type }
-  ? Type
+type TypeOf<T extends { type: any }> = T extends { type: /* ❓ */ }
+  ? /* ❓ */
   : never;
 
-/**
- * Hover on the below type to see waht's the result.
- */
-type PetTypes = TypeOf<Pet>;
+type PetTypes = TypeOf<Pet>; // Expected: 'dog' | 'cat'
 
 /**
- * FilterType returns set intersection.
- *
- * Task 1: Recator FilterType so it doesn't use conditional types.
- * Hint: Use one of the utility types.
- */
-type FilterType<T, Matching> = T extends Matching ? T : never;
-
-/**
- * Cases type builds a dictionary type where discriminants are keys,
- * and values are functions to be called if there's a match.
+ * Cases type builds a dictionary type where discriminants ('dog' | 'cat' here) are the keys,
+ * and the values are functions to be called on a match.
+ * 
+ * Task 2: Fill the blanks with proper types.
  */
 type Cases<T extends { type: any }, R> = {
-  [P in TypeOf<T>]: (val: FilterType<T, { type: P }>) => R;
+  [P in /* ❓ */]: (val: Extract<T, { type: P }>) => /* ❓ */;
 };
 
 function match<T extends { type: string }, C extends Cases<T, any>>(
   value: T,
   cases: C,
 ): ReturnType<C[keyof C]> {
-  return cases[value.type as TypeOf<T>](
-    value as FilterType<T, { type: string }>,
-  );
+  return cases[value.type as TypeOf<T>](value as Extract<T, { type: string }>);
 }
 
-declare const pet: Cat | Dog;
+const pet /* : Cat | Dog */ = {
+  type: 'cat',
+  name: 'Fluffy',
+  lives: [{ age: 7 }, { age: 9 }],
+} as Cat | Dog;
+// Notice that we need to assert as Cat | Dog here
+// If we just annotated pet variable with this type
+// TypeScript would narrow the type of pet to Cat
 
 const _: number | string = match(pet, {
-  cat: a => a.lives.age,
-  dog: b => `Dog is ${b.age} years old.`,
+  cat: a => a.lives.reduce((acc, x) => x.age + acc, 0),
+  dog: b => `${b.name} is ${b.age} years old.`,
 });

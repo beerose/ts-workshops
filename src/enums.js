@@ -15,18 +15,3 @@ var Direction;
   Direction['Left'] = 'LEFT';
   Direction['Right'] = 'RIGHT';
 })(Direction || (Direction = {}));
-
-('use strict');
-var NumericEnum;
-(function(NumericEnum) {
-  NumericEnum[(NumericEnum['Yes'] = 0)] = 'Yes';
-  NumericEnum[(NumericEnum['No'] = 1)] = 'No';
-})(NumericEnum || (NumericEnum = {}));
-let nameOfA = NumericEnum[NumericEnum.A];
-var StringEnum;
-(function(StringEnum) {
-  StringEnum['Yes'] = 'Yes';
-  StringEnum['No'] = 'No';
-})(StringEnum || (StringEnum = {}));
-let b = StringEnum.Yes;
-let nameOfB = StringEnum[StrEnum.Yes];

@@ -1,19 +1,19 @@
 {
   const person = {
-    name: 'Ola',
+    name: 'Aleksandra',
     age: 23,
   };
 
-  person.name = 'Aleksandra'; // ✅
+  person.name = 'Ola'; // ✅
 }
 
 {
   const person = {
-    name: 'Ola',
+    name: 'Aleksandra',
     age: 23,
   } as const;
 
-  person.name = 'Aleksandra'; // ❌
+  person.name = 'Ola'; // ❌
   /**
    * const person2: {
    * readonly name: "Ola";
@@ -29,11 +29,11 @@
   };
 
   const person: Person = {
-    name: 'Ola',
+    name: 'Aleksandra',
     age: 23,
   };
 
-  person.name = 'Aleksandra'; // ❌
+  person.name = 'Ola'; // ❌
 }
 
 let foo = 'Foo'; // foo: string

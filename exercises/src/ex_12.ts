@@ -8,7 +8,7 @@
 interface Cat {
   type: 'cat';
   name: string;
-  lives: { age: number }[];
+  lives: { age: number };
 }
 interface Dog {
   type: 'dog';
@@ -40,8 +40,8 @@ type PetTypes = TypeOf<Pet>;
 type FilterType<T, Matching> = T extends Matching ? T : never;
 
 /**
- * Cases type builds a dictionary where discriminants are keys,
- * and values are functions that have to be called
+ * Cases type builds a dictionary type where discriminants are keys,
+ * and values are functions to be called if there's a match.
  */
 type Cases<T extends { type: any }, R> = {
   [P in TypeOf<T>]: (val: FilterType<T, { type: P }>) => R;
@@ -56,9 +56,9 @@ function match<T extends { type: string }, C extends Cases<T, any>>(
   );
 }
 
-const pet: Cat | Dog = { type: 'Cat', a: 10 } as any;
+declare const pet: Cat | Dog;
 
-const _: number | number[] = match(pet, {
-  Cat: a => a.lives.map(life => life.age),
-  Dog: b => b.age,
+const _: number | string = match(pet, {
+  cat: a => a.lives.age,
+  dog: b => `Dog is ${b.age} years old.`,
 });

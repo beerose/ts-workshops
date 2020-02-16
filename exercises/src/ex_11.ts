@@ -9,7 +9,7 @@
  *
  * For example if we have Promise<ExampleType> how to get ExampleType?
  * 
- * Task: add implementation for ExtractType
+ * Task: add implementation for Unbox
  */
 
 import { ok } from 'assert';
@@ -17,10 +17,10 @@ import { ok } from 'assert';
 type X = Promise<string>;
 type Y = Promise<{ field: number }>;
 
-type ResultX = ExtractType<X>; // ResultX type equals string
-type ResultY = ExtractType<Y>; // ResultY type equals { field: number }
+type ResultX = Unbox<X>; // Expected: string
+type ResultY = Unbox<Y>; // Expected: { field: number }
 
-type ExtractType<A> = /** implement me! **/ ;
+type Unbox<A> = /** implement me! **/ ;
 
 declare const x: ResultX;
 declare const y: ResultY;

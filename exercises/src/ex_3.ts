@@ -9,7 +9,7 @@ type AppState =
   | { status: 'error'; errorCode: number; errorMessage: string };
 
 /**
- * Let's say we have an AppState type as above. It's a discriminated unions.
+ * Let's say we have an AppState type as above. It's a discriminated union.
  * It's an union type and has a discriminant -- `status`.
  *
  * Depending on the status we want to display proper message.
@@ -18,10 +18,10 @@ type AppState =
  * `getDisplayMessage` function? Bugs 😱.
  *
  * We want TypeScript to verify that we've covered all the possible values.
- * Exhaustive switch is how we can get it.
+ * Exhaustive switch is how we can do it.
  *
  * Task: fill the body of `exhaustiveCheck` and then use it inside of the `getDisplayMessage` function.
- * Play a bit with the AppState type and check what would happen if you'd extend it or chane some status value.
+ * Play a bit with the AppState type and check what would happen if you'd extend it or change some status value.
  */
 
 function exhaustiveCheck(param: never): never {

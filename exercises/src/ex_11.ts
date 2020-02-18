@@ -9,7 +9,7 @@
  *
  * For example if we have Promise<ExampleType> how to get ExampleType?
  * 
- * Task: add implementation for Unbox
+ * Task: add implementation for Unbox.
  */
 
 import { ok } from 'assert';

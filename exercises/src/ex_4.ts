@@ -4,10 +4,8 @@
 
 /**
  * In computer science, a nominal type system (or name-based type system)
- * is a major class of type system,
- * in which compatibility and equivalence of data types
- * is determined by explicit declarations and/or
- * the name of the types.
+ * is a major class of type system, in which compatibility and equivalence of data types
+ * is determined by explicit declarations and/or the name of the types.
  * Nominal systems are used to determine if types are equivalent,
  * as well as if a type is a subtype of another.
  *
@@ -48,12 +46,12 @@ function gross(net: USD): USD {
   return (net + tax) as USD;
 }
 
-// Expect: No compile error
+// Expected: No compile error
 gross(usd);
 
 // Number and EUR are not assignable to USD
-// Expect error
+// Expected: error
 const dollars: USD = 100;
 
-// Expect: Compile error (Type '"EUR"' is not assignable to type '"USD"'.)
+// Expected: Compile error (Type '"EUR"' is not assignable to type '"USD"'.)
 gross(eur);

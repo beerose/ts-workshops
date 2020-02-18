@@ -3,10 +3,10 @@
  */
 
 /**
- * Object.keys() doen's return keyof type, but its return type is string[].
+ * Object.keys() doen's return keyof type. It return type is string[].
  * This is by desgign, because a type with additional properties is always a subtype of its base type.
  *
- * So take a look at the following type User and ExtendedUser:
+ * Take a look at the following type User and ExtendedUser:
  */
 
 interface User {
@@ -34,7 +34,7 @@ const user: User = extendedUser;
  * So if we had a function as follow that is using keyof
  * we'd expect it to never throw error.
  *
- * But passing object user as created above, would result in error,
+ * But passing object `user` as created above, would result in error,
  * since it has more properties than type User.
  */
 
@@ -47,7 +47,7 @@ const handleUserProperties = (p: keyof User) => {
     case 'surname':
       return 'Surname';
     default:
-      throw new Error('invalid propert');
+      throw new Error('invalid property');
   }
 };
 
@@ -56,9 +56,8 @@ const handleUserProperties = (p: keyof User) => {
  * always produce an exhaustive list.
  *
  * Yet, sometimes we may want to have exact type's propeties
- * as a return type from Object.keys(), not string[].
- *
- * There are two things needed to be done to have it.
+ * as a return type from Object.keys(), not just string[].
+ * That's what we're going to do in this exercise.
  *
  * Task 1: Add generic parameter to the function and use it to type source param.
  * Task 2: Add type assertion in the function body.

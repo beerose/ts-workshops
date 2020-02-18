@@ -5,13 +5,13 @@
 import React from 'react';
 
 /**
- * Let's say we have a Select component, which kinda extends HTML select element.
+ * Let's say we have a Select component, which sort of extends HTML select element.
  * It's getting following props:
  *  options — list of options to display
  *  value — selected value
  *  onChange — on value change handler
  *
- * An options has two properties:
+ * An option has two properties:
  *  value: string | number
  *  label: string
  *
@@ -34,7 +34,7 @@ type Option</** fill me! */> = {
 };
 
 /**
- * Task 2: Add generic parameter to the Props and fill the blanks in its definition.
+ * Task 2: Add generic parameter to the Props type and fill the blanks in its definition.
  */
 
 type Props<T extends OptionValue> = {

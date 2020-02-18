@@ -11,7 +11,7 @@ interface Person {
 /**
  * Very often when we want to send an object for update to the API,
  * we only need to send a subset of it — only the properties that were changed.
- * Let's say we want to update item of type Person. Then we would need 
+ * Let's say we want to update an item of type Person. Then we would need 
  * following type:
  */
 
@@ -22,7 +22,7 @@ interface PersonUpdate {
 }
 
 /**
- * It's not cool, because whenever you'd need to change Person type,
+ * It's not cool, because whenever you'd need to change Person,
  * you'd also need to change PersonUpdate. So it's likely they get out of sync. 
  * 
  * That's why we want to create a type that depends on Person. 

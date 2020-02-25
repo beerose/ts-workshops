@@ -1,69 +1,23 @@
 /**
- * Exercise 7: Object keys
+ * Exercise 7: Nullish Coalescing
  */
 
 /**
- * Object.keys() doen's return keyof type. It return type is string[].
- * This is by desgign, because a type with additional properties is always a subtype of its base type.
+ * From TypeScript 3.7 there's a new operator `??` which you can think of as
+ * a way to “fall back” to a default value when dealing with null or undefined.
  *
- * Take a look at the following type User and ExtendedUser:
- */
-
-interface User {
-  name: string;
-  surname: string;
-  age: number;
-}
-
-interface ExtendedUser extends User {
-  address: string;
-}
-
-/**
- * Each object of type ExtendedUser is also a valid User.
- */
-const extendedUser: ExtendedUser = {
-  name: 'Jon',
-  surname: 'Doe',
-  age: 30,
-  address: 'Abracadabra Street',
-};
-const user: User = extendedUser;
-
-/**
- * So if we had a function as follow that is using keyof
- * we'd expect it to never throw error.
+ * For example, `return values.name ?? placeholder` means:
+ * if values.name is defined return values.name, otherwise return placeholder.
  *
- * But passing object `user` as created above, would result in error,
- * since it has more properties than type User.
+ * Task: Convert the following code, so it uses ?? operator.
  */
 
-const handleUserProperties = (p: keyof User) => {
-  switch (p) {
-    case 'age':
-      return 'Age';
-    case 'name':
-      return 'Name';
-    case 'surname':
-      return 'Surname';
-    default:
-      throw new Error('invalid property');
+const displayName = (user: { name?: string }) => {
+  if (user.name !== undefined && user.name !== null) {
+    return user.name;
   }
+  return '-';
 };
 
-/**
- * So if Object.keys would return keyof type, then it wouldn't
- * always produce an exhaustive list.
- *
- * Yet, sometimes we may want to have exact type's propeties
- * as a return type from Object.keys(), not just string[].
- * That's what we're going to do in this exercise.
- *
- * Task 1: Add generic parameter to the function and use it to type source param.
- * Task 2: Add type assertion in the function body.
- */
-
-const UNSAFE_keys = </** fill me */>(source: /** fill me */) =>
-  Object.keys(source) as /** fill me */[];
-
-const keys = UNSAFE_keys(user);
+const displayName2 = (user: { name?: string }) =>
+  user.name ?? '-'; /** implement me! */

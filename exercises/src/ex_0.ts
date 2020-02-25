@@ -19,7 +19,7 @@ const userNames = users => {
   return names.join(', ');
 };
 
-const getDate = date => date.toLocaleDateString();
+const getDate = date: Date => date.toLocaleDateString();
 
 const createUser = function(name) {
   let age;

@@ -14,14 +14,13 @@ type AppState =
  *
  * Depending on the status we want to display proper message.
  * So, basically we can make a switch case and handle all possible statuses.
- * Cool, but.. what would happen if we change AppState type and forget to update
+ * Cool, but.. what would happen if we changed AppState type and forgot to update
  * `getDisplayMessage` function? Bugs 😱.
  *
  * We want TypeScript to verify that we've covered all the possible values.
  * Exhaustive switch is how we can do it.
  *
  * Task: fill the body of `exhaustiveCheck` and then use it inside of the `getDisplayMessage` function.
- * Play a bit with the AppState type and check what would happen if you'd extend it or change some status value.
  */
 
 function exhaustiveCheck(param: never): never {

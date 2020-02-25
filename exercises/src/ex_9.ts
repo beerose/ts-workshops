@@ -1,22 +1,25 @@
 /**
- * Exercise 8: Nullish Coalescing
+ * Exercise 11
  */
 
 /**
- * From TypeScript 3.7 there's a new operator `??` which you can think of as
- * a way to “fall back” to a default value when dealing with null or undefined.
+ * If we have a type which is wrapped type like Promise,
+ * how we can get a type which is inside the wrapped type?
  *
- * For example, `return values.name ?? placeholder` means:
- * if values.name is defined return values.name, otherwise return placeholder.
+ * For example if we have Promise<ExampleType> how to get ExampleType?
  *
- * Task: Convert the following code, so it uses ?? operator.
+ * Task: add implementation for Unbox.
  */
 
-const displayName = (user: { name?: string }) => {
-  if (user.name !== undefined && user.name !== null) {
-    return user.name;
-  }
-  return '-';
-};
+import { ok } from 'assert';
 
-const displayName2 = (user: { name?: string }) => /** implement me! */
+type X = Promise<string>;
+type Y = Promise<{ field: number }>;
+
+type ResultX = Unbox<X>; // Expected: string
+type ResultY = Unbox<Y>; // Expected: { field: number }
+
+type Unbox<A> = /** implement me! **/;
+
+const x: ResultX = 'Hello';
+const y: ResultY = { field: 1 };

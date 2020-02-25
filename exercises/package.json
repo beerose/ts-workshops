@@ -7,17 +7,17 @@
     "ex-2": "ts-node ./src/ex_2.ts",
     "ex-3": "tsc ./src/ex_3.ts",
     "ex-4": "tsc ./src/ex_4.ts",
-    "ex-5": "tsc ./src/ex_5.tsx",
-    "ex-6": "tsc ./src/ex_6.tsx",
-    "ex-7": "tsc ./src/ex_7.tsx"
+    "ex-5": "tsc ./src/ex_5.ts",
+    "ex-6": "tsc ./src/ex_6.ts",
+    "ex-7": "tsc ./src/ex_7.ts",
+    "ex-8": "tsc ./src/ex_8.ts",
+    "ex-9": "tsc ./src/ex_9.ts",
+    "ex-10": "tsc ./src/ex_10.ts"
   },
-  "devDependencies": {},
-  "name": "exercises",
-  "dependencies": {
-    "@types/node": "^13.7.1",
-    "@types/react": "^16.9.19",
-    "react": "^16.12.0",
+  "devDependencies": {
+    "@types/node": "^10.5.7",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
-  }
+  },
+  "name": "exercises"
 }

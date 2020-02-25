@@ -1,63 +1,63 @@
 /**
- * Exercise 10: Utility types
- */
-
-import { ok } from 'assert';
-
-/**
- * SetDifference type should return a set difference of given union types `A` and `B`
- * 
- * Task 1: Implement this type using conditional types.
- */
-export type SetDifference<A, B> = /** implement me! */;
-
-declare const one: SetDifference<'1' | '2' | '3', '2' | '3' | '4'>;
-ok(one === "1")
-
-/**
- * Subtract from `T` removes properties that exist in `T1` 
- * (`T1` has a subset of the properties of `T`)
- * 
- * Task 2: Implement Substract using SetDifference type.
- */
-export type Subtract<T extends T1, T1 extends object> = /** implement me! */;
-
-type Props = { name: string; age: number; visible: boolean };
-type DefaultProps = { age: number };
-
-type RestProps = Subtract<Props, DefaultProps>;
-declare const restProps: RestProps;
-
-ok(
-  'name' in restProps &&
-    'visible' in restProps &&
-    typeof restProps.name === 'string' &&
-    typeof restProps.visible === 'boolean',
-);
-
-/**
- * Optional makes a set of properties optional in T.
+ * Exercise 10: Sum Types and Conditional Types
  *
- * For example:
- * type Props = {
- *   name: string;
- *   age: number;
- *   visible: boolean;
- * }
- * type Props2 = Optional<Props, 'age' | 'visible'>;
- * // Expected: { name: string; age?: number; visible?: boolean; }
- * 
- * Task 3: Implement Optional type using utility types. 
+ * In this exercise we're going to implement lightweight sum type matching
+ * which imitates well known from other languages pattern matching.
+ * It can be used as a "switch expression".
  */
-export type Optional<T extends object, K extends keyof T = keyof T> = /** implement me */;
 
-type Item = {
-  weight: number,
-  name: string,
+interface Cat {
+  type: 'cat';
+  name: string;
+  lives: { age: number }[];
+}
+interface Dog {
+  type: 'dog';
+  name: string;
+  age: number;
 }
 
-type ItemWithOptionalWeight = Optional<Item, "weight">
+type Pet = Cat | Dog;
 
-const item: ItemWithOptionalWeight = {
-  name: "book"
+/**
+ * We're assuming that the discriminant property is named `type`.
+ * The type below extracts all the discriminants from given union type.
+ *
+ * Task 1: Fill the blanks with proper types.
+ */
+type TypeOf<T extends { type: any }> = T extends { type: /* ❓ */ }
+  ? /* ❓ */
+  : never;
+
+type PetTypes = TypeOf<Pet>; // Expected: 'dog' | 'cat'
+
+/**
+ * Cases type builds a dictionary type where discriminants ('dog' | 'cat' here) are the keys,
+ * and the values are functions to be called on a match.
+ * 
+ * Task 2: Fill the blanks with proper types.
+ */
+type Cases<T extends { type: any }, R> = {
+  [P in /* ❓ */]: (val: Extract<T, { type: P }>) => /* ❓ */;
+};
+
+function match<T extends { type: string }, C extends Cases<T, any>>(
+  value: T,
+  cases: C,
+): ReturnType<C[keyof C]> {
+  return cases[value.type as TypeOf<T>](value as Extract<T, { type: string }>);
 }
+
+const pet /* : Cat | Dog */ = {
+  type: 'cat',
+  name: 'Fluffy',
+  lives: [{ age: 7 }, { age: 9 }],
+} as Cat | Dog;
+// Notice that we need to assert as Cat | Dog here
+// If we just annotated pet variable with this type
+// TypeScript would narrow the type of pet to Cat
+
+const _: number | string = match(pet, {
+  cat: a => a.lives.reduce((acc, x) => x.age + acc, 0),
+  dog: b => `${b.name} is ${b.age} years old.`,
+});

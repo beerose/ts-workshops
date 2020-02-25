@@ -4,21 +4,16 @@
 
 import { ok } from 'assert';
 
-export type Primitive =
-  | string
-  | number
-  | bigint
-  | boolean
-  | symbol
-  | null
-  | undefined;
+type Primitive = string | number | bigint | boolean | symbol | null | undefined;
 
 /**
- * Task 1: Fill the body of the following type guard, that checks wheter value
+ * Task 1: Fill the body of the following type guard, that checks whether value
  * is a primitive.
  */
 
-export const isPrimitive = (val: unknown): val is Primitive => {};
+const isPrimitive = (val: unknown): val is Primitive => {
+  return true;
+};
 
 ok(isPrimitive(1) === true);
 ok(isPrimitive('wowowo!') === true);
